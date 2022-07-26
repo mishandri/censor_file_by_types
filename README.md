@@ -1,15 +1,12 @@
-Censor files by types
-=====================
+# Censor files by types
 Program removes all new files that do not match the extensions
 
-Requirements
-=====================
+# Requirements
 WatchDog library is required
-    
+```python
     pip install watchdog
-    
-Describe
-==============
+```
+# Describe
 source_path.txt
 
     List of directories (now it's only 1 path)
@@ -18,6 +15,5 @@ file_types.txt
     
     List of filetypes, that don't remove
     
-Attention
-==============
+# Attention
 Program don't remove files, that already exist, be carefully
