@@ -1,6 +1,6 @@
 Censor files by types
 =====================
-Program removes all files that do not match the extensions
+Program removes all new files that do not match the extensions
 
 Requirements
 =====================
