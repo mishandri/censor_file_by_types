@@ -10,6 +10,7 @@ WatchDog library is required
 source_path.txt (in the same folder with "censor_file_type.py")
 
     List of directories. Don't intersect directories
+    Directories should already exist
 
 file_types.txt (in the same folder with "censor_file_type.py")
     
