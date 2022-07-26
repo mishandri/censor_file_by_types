@@ -7,11 +7,11 @@ WatchDog library is required
     pip install watchdog
 ```
 # Describe
-source_path.txt
+source_path.txt (in the same folder with "censor_file_type.py")
 
-    List of directories (now it's only 1 path)
+    List of directories. Don't intersect directories
 
-file_types.txt
+file_types.txt (in the same folder with "censor_file_type.py")
     
     List of filetypes, that don't remove
     
