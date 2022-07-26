@@ -21,7 +21,7 @@ types_file.close()  #Закрыли файл
 class MyHandler(FileSystemEventHandler):
     def on_created(self, event):
         #print("Создан файл:", event.src_path)
-        #Проверяем расширение исходного файла и если совпадает с типами, то удаляем
+        #Проверяем расширение исходного файла и если не совпадает с типами, то удаляем
         ext = event.src_path.split('.')[-1].lower()
         if ext not in FILE_TYPES:
             while True:
@@ -42,7 +42,7 @@ class MyHandler(FileSystemEventHandler):
 
     def on_moved(self, event):
         #print("Перемещён\переименован файл:", event.src_path, event.dest_path)
-        #Проверяем расширение переименнованого файла и если совпадает с типами, то удаляем
+        #Проверяем расширение переименнованого файла и если не совпадает с типами, то удаляем
         ext = event.dest_path.split('.')[-1].lower()
         if ext not in FILE_TYPES:
             while True:
