@@ -1,5 +1,5 @@
 # Censor files by types
-Program removes all new files that do not match the extensions
+Program removes all new files that do not match the extensions in specified folders and subfolders
 
 # Requirements
 WatchDog library is required
