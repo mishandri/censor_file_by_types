@@ -8,7 +8,7 @@ WatchDog library is required
     
     pip install watchdog
     
-Dsecribe
+Describe
 ==============
 source_path.txt
 
