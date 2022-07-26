@@ -4,6 +4,8 @@ import datetime
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
+logname = "log308.log"#название для лога
+
 #Класс для отслеживания события
 path_file = open('source_path.txt','r') #Отслеживаемые пути. Желательно не пересекать пути
 types_file = open('file_types.txt','r') #Разрешённые типы файлов
@@ -27,14 +29,14 @@ class MyHandler(FileSystemEventHandler):
             while True:
                 try:
                     os.remove(event.src_path)
-                    log_file = open("log308.log",'a')
+                    log_file = open(logname,'a')
                     string = str(datetime.datetime.today())[:19:] + "\tудалён\t" + event.src_path
                     print(string)
                     log_file.write(string + '\n')
                     log_file.close()
                     break
                 except PermissionError:
-                    log_file = open("log308.log",'a')
+                    log_file = open(logname,'a')
                     string = str(datetime.datetime.today())[:19:] + "\tзанят\t" + event.src_path
                     print(string)
                     log_file.write(string + '\n')
@@ -48,20 +50,20 @@ class MyHandler(FileSystemEventHandler):
             while True:
                 try:
                     os.remove(event.dest_path)
-                    log_file = open("log308.log",'a')
+                    log_file = open(logname,'a')
                     string = str(datetime.datetime.today())[:19:] + "\tудалён\t" + event.dest_path
                     print(string)
                     log_file.write(string + '\n')
                     log_file.close()
                     break
                 except PermissionError:
-                    log_file = open("log308.log",'a')
+                    log_file = open(logname,'a')
                     string = str(datetime.datetime.today())[:19:] + "\tзанят\t" + event.dest_path
                     print(string)
                     log_file.write(string + '\n')
                     log_file.close()
 
-print('Из пути:\n',SOURCE_PATH[0], '\nНе будут удаляться файлы типа:\n', FILE_TYPES)
+print('Из путей:\n',SOURCE_PATH, '\nНе будут удаляться файлы типа:\n', FILE_TYPES)
 
                 
 #Запускаем My_handler
