@@ -5,7 +5,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 #Класс для отслеживания события
-path_file = open('source_path.txt','r') #Отслеживаемый путь
+path_file = open('source_path.txt','r') #Отслеживаемые пути. Желательно не пересекать пути
 types_file = open('file_types.txt','r') #Разрешённые типы файлов
 
 #SOURCE_PATH - список путей (используется пока только 1)
@@ -21,7 +21,7 @@ types_file.close()  #Закрыли файл
 class MyHandler(FileSystemEventHandler):
     def on_created(self, event):
         #print("Создан файл:", event.src_path)
-        #Проверяем расширение исходного файла и если не совпадает с типами, то удаляем
+        #Проверяем расширение исходного файла и если совпадает с типами, то удаляем
         ext = event.src_path.split('.')[-1].lower()
         if ext not in FILE_TYPES:
             while True:
@@ -42,7 +42,7 @@ class MyHandler(FileSystemEventHandler):
 
     def on_moved(self, event):
         #print("Перемещён\переименован файл:", event.src_path, event.dest_path)
-        #Проверяем расширение переименнованого файла и если не совпадает с типами, то удаляем
+        #Проверяем расширение переименнованого файла и если совпадает с типами, то удаляем
         ext = event.dest_path.split('.')[-1].lower()
         if ext not in FILE_TYPES:
             while True:
@@ -67,7 +67,8 @@ print('Из пути:\n',SOURCE_PATH[0], '\nНе будут удаляться �
 #Запускаем My_handler
 event_handler = MyHandler()
 observer = Observer()
-observer.schedule(event_handler, path=SOURCE_PATH[0], recursive=True)
+for index in range(len(SOURCE_PATH)):
+    observer.schedule(event_handler, path=SOURCE_PATH[index], recursive=True)
 observer.start()
 
 while True:
